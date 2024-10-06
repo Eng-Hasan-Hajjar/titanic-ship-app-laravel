@@ -1,0 +1,55 @@
+.hcontainer {
+    direction: ltr;
+
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.hcard-body {
+    text-align: center; /* تحديد محاذاة النص إلى اليمين */
+}
+
+.hcard {
+    width: 70%;
+    margin-top: 50px;
+    direction: ltr;
+}
+.hcardcreat {
+    width: 100%;
+    margin-top: 50px;
+    direction: ltr;
+}
+.helement{
+    text-align: left;
+    width: 70%;
+    padding-top: 20px;
+    direction: ltr;
+}
+.helementedit{
+    text-align: left;
+    width: 100%;
+    direction: ltr;
+    padding-top: 20px;
+}
+
+
+table {
+    direction: rtl;
+    text-align: left;
+
+    border-collapse: collapse;
+    width: 100%;
+
+  }
+
+  th, td {
+    direction: ltr;
+    text-align: left;
+
+    padding: 8px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #D6EEEE;
+  }

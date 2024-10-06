@@ -1,0 +1,236 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar */
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    font-size: 1rem;
+    margin-right: 15px;
+}
+
+/* Hero Section */
+.hero-section {
+    background: url('images/hero-bg.jpg') no-repeat center center/cover;
+    height: 100vh;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #0056b3;
+}
+
+.hero-section p {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+    color: #0f0282;
+}
+
+.hero-section .btn-lg {
+    padding: 10px 30px;
+    font-size: 1.2rem;
+}
+
+/* Services Section */
+.services-section {
+    background-color: #f8f9fa;
+}
+
+.service-card {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+}
+
+.service-icon {
+    font-size: 3rem;
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+/* Contact Section */
+.contact-section {
+    background-color: #e9ecef;
+}
+
+.form-control {
+    border-radius: 50px;
+    padding: 15px;
+}
+
+.btn-block {
+    border-radius: 50px;
+}
+
+/* Footer */
+.footer {
+    background-color: #0056b3;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-section p {
+        font-size: 1rem;
+    }
+
+    .service-card {
+        margin-bottom: 30px;
+    }
+
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .navbar-nav .nav-link {
+        margin: 5px 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .hero-section p {
+        font-size: 0.9rem;
+    }
+}
+
+
+
+/* About Us Section */
+.about-section {
+    background-color: #f8f9fa;
+}
+
+.about-section .lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+
+.about-section img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(1, 93, 222, 0.537);
+    background-color: 0 4px 15px rgba(1, 93, 222, 0.537);
+    background: rgba(137, 234, 245, 0.39);
+}
+
+
+
+
+
+.hero-section {
+    position: relative;
+}
+
+.bg-cover {
+    background-size: cover;
+    background-position: center;
+}
+
+.carousel-item .container {
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(137, 234, 245, 0.39);
+}
+
+.carousel-caption {
+    color: #fff;
+}
+
+.btn-lg {
+    padding: 15px 30px;
+    font-size: 1.25rem;
+}
+
+
+
+
+
+
+
+
+
+.navbar-brand {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: #007bff; /* لون النص */
+    transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+    color: #0056b3; /* لون النص عند التمرير */
+}
+
+.highlight {
+    color: #0056b3; /* لون الجزء المميز من الاسم */
+}
+
+.navbar-toggler {
+    border-color: #007bff;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #555;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #007bff;
+}
+
+.btn-outline-primary {
+    color: #007bff;
+    border-color: #007bff;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
