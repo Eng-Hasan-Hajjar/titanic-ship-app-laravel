@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('instagram_accounts', function (Blueprint $table) {
+        Schema::create('rooms', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('url');
+            $table->string('room_number', 10);
+            $table->enum('room_type', ['single', 'double', 'suite']);
+            $table->boolean('is_occupied')->default(false);
+            $table->decimal('price', 10, 2);
+            $table->integer('capacity');
             $table->text('description')->nullable();
-            $table->integer('followers_count');
-            $table->foreignId('category_id')->constrained();
-            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('instagram_accounts');
+        Schema::dropIfExists('rooms');
     }
 };
