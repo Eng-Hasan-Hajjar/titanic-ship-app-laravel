@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('restaurants', function (Blueprint $table) {
+        Schema::create('pools', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('capacity');
-            $table->string('cuisine_type');
-            $table->string('opening_hours');
-            $table->boolean('is_open')->default(true);
+            $table->string('pool_name');
+        $table->decimal('depth', 5, 2);
+        $table->integer('capacity');
+        $table->enum('water_type', ['freshwater', 'saltwater']);
+        $table->boolean('is_open')->default(true);
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('restaurants');
+        Schema::dropIfExists('pools');
     }
 };
