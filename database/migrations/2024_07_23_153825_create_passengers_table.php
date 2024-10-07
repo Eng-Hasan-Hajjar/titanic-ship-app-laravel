@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('customers', function (Blueprint $table) {
+        Schema::create('passengers', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->Integer('phone');
@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('current_location')->default('حلب');
             $table->boolean('gender');
             $table->date('birthday');
-            
+
 
             $table->timestamps();
             // تعيين ترتيب الحقول
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('customers');
+        Schema::dropIfExists('passengers');
     }
 };

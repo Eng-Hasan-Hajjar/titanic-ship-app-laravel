@@ -13,13 +13,20 @@ return new class extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('customer_id')->constrained('customers');
-            $table->foreignId('room_id')->constrained('rooms');
+            $table->unsignedBigInteger('customer_id');
+            $table->unsignedBigInteger('room_id');
             $table->date('start_date');
             $table->date('end_date');
             $table->decimal('total_price', 10, 2);
             $table->enum('status', ['confirmed', 'cancelled', 'checked_in', 'checked_out']);
             $table->timestamps();
+
+            $table->index('customer_id');
+            $table->foreign('customer_id')->references('id')->on('customers');
+
+            $table->index('room_id');
+            $table->foreign('room_id')->references('id')->on('rooms');
+
         });
     }
 
