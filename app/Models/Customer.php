@@ -18,13 +18,17 @@ class Customer extends Model
     'current_location',
     'gender',
     'birthday',
-    
+
 ];
 protected $dates = ['birthday'];
 
 public function user(): BelongsTo
 {
     return $this->belongsTo(User::class);
+}
+public function foodOrders()
+{
+    return $this->hasMany(FoodOrder::class);
 }
 
 }

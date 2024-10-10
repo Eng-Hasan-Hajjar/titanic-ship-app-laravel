@@ -143,7 +143,7 @@
                 <div class="card text-white bg-primary">
                     <div class="card-body">
                         <h5 class="card-title"> Number of rooms <i class="fas fa-bed icon"></i></h5>
-                        <p class="card-text">{{ $facebookPageCount }}</p>
+                        <p class="card-text"></p>
                     </div>
                 </div>
             </div>
@@ -152,7 +152,7 @@
                 <div class="card text-white bg-secondary">
                     <div class="card-body">
                         <h5 class="card-title">Number of pools <i class="fas fa-swimmer icon"></i></h5>
-                        <p class="card-text">{{ $instagramAccountCount }}</p>
+                        <p class="card-text"></p>
                     </div>
                 </div>
             </div>
@@ -161,7 +161,7 @@
                 <div class="card text-white bg-info">
                     <div class="card-body">
                         <h5 class="card-title">Number of restaurants<i class="fas fa-utensils icon"></i></h5>
-                        <p class="card-text">{{ $youtubeChannelCount }}</p>
+                        <p class="card-text"></p>
                     </div>
                 </div>
             </div>
