@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Restaurant;
 use Illuminate\Http\Request;
 
 class RestaurantController extends Controller
@@ -9,12 +10,12 @@ class RestaurantController extends Controller
     public function index()
     {
         $restaurants = Restaurant::all();
-        return view('restaurants.index', compact('restaurants'));
+        return view('backend.restaurants.index', compact('restaurants'));
     }
 
     public function create()
     {
-        return view('restaurants.create');
+        return view('backend.restaurants.create');
     }
 
     public function store(Request $request)
@@ -32,12 +33,12 @@ class RestaurantController extends Controller
 
     public function show(Restaurant $restaurant)
     {
-        return view('restaurants.show', compact('restaurant'));
+        return view('backend.restaurants.show', compact('restaurant'));
     }
 
     public function edit(Restaurant $restaurant)
     {
-        return view('restaurants.edit', compact('restaurant'));
+        return view('backend.restaurants.edit', compact('restaurant'));
     }
 
     public function update(Request $request, Restaurant $restaurant)

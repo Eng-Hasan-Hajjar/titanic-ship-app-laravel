@@ -14,12 +14,10 @@ use App\Http\Controllers\Admin\UserManagementController;
 
 
 use App\Http\Controllers\Backend\ProductController;
-use App\Http\Controllers\Backend\FacebookPageController;
-use App\Http\Controllers\Backend\InstagramAccountController;
-use App\Http\Controllers\Backend\YouTubeChannelController;
+
 
 use App\Http\Controllers\Backend\CategoryController;
-use App\Http\Controllers\Backend\RecommendationController;
+
 
 Route::get('/', function () {
     return view('frontend.index');
@@ -69,65 +67,12 @@ require __DIR__.'/auth.php';
 Route::prefix('backend')->group(function() {
     Route::resource('products', ProductController::class);
 
-    Route::resource('facebook_pages', FacebookPageController::class);
-    Route::post('facebook_pages/filter', [FacebookPageController::class, 'filter'])->name('facebook_pages.filter');
-
-
-
-    Route::resource('instagram_accounts', InstagramAccountController::class);
-    Route::post('instagram_accounts/filter', [InstagramAccountController::class, 'filter'])->name('instagram_accounts.filter');
-
-    Route::resource('youtube_channels', YouTubeChannelController::class);
-    Route::post('youtube_channels/filter', [YouTubeChannelController::class, 'filter'])->name('youtube_channels.filter');
 
     Route::resource('categories', CategoryController::class);
 
 
 
 });
-
-
-
-Route::post('/recommend', [RecommendationController::class, 'recommend'])->name('recommendations.recommend');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -159,13 +104,84 @@ Route::post('/admin/approve-user/{id}', [AdminDashboardController::class, 'appro
 
 
 
-Route::group(['middleware' => ['auth', 'approved']], function () {
-
-    Route::resource('backend/recommendations', RecommendationController::class);
- //   Route::get('/some-restricted-page', [SomeController::class, 'restrictedPage'])->name('restricted.page');
-});
 
 
 Route::get('/approval-required', function () {
     return view('auth.approval_required');
 })->name('approval_required');
+
+
+
+
+
+
+/////////////////////****************/////////////////////////*********////// */ */
+use App\Http\Controllers\RoomController;
+use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\PoolController;
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\FoodOrderController;
+use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\EmployeeController;
+
+
+Route::get('/users/employees', [EmployeeController::class, 'employees'])->name('users.employees');
+
+// الغرف
+Route::resource('rooms', RoomController::class);
+
+// المطاعم
+Route::resource('restaurants', RestaurantController::class);
+
+// المسابح
+Route::resource('pools', PoolController::class);
+
+// القوائم
+Route::resource('menus', MenuController::class);
+
+// الطلبات
+Route::resource('food_orders', FoodOrderController::class);
+
+// الحجوزات
+Route::resource('reservations', ReservationController::class);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

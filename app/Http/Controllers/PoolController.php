@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pool;
 use Illuminate\Http\Request;
 
 class PoolController extends Controller

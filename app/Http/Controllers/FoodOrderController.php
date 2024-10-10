@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use App\Models\FoodOrder;
+use App\Models\Menu;
 use Illuminate\Http\Request;
 
 class FoodOrderController extends Controller

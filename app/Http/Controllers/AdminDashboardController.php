@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\FoodOrder;
+use App\Models\Menu;
+use App\Models\Pool;
+use App\Models\Reservation;
+use App\Models\Restaurant;
+use App\Models\Room;
 use App\Models\User;
 
 
@@ -16,17 +21,21 @@ class AdminDashboardController extends Controller
         $adminCount = User::where('role', 'admin')->count();
         $employeeCount = User::where('role', 'employee')->count();
 
-/*
-        // Fetching counts for social media accounts
-        $facebookPageCount = FacebookPage::count();
-        $instagramAccountCount = InstagramAccount::count();
-        $youtubeChannelCount = YouTubeChannel::count();
-*/
+
+
+        $roomsCount = Room::count();
+        $restaurantCount = Restaurant::count();
+        $foodOrderCount = FoodOrder::count();
+        $menuCount = Menu::count();
+        $reservationCount = Reservation::count();
+        $poolCount = Pool::count();
+
 
         // Passing all data to the view
         return view('layouts.app', compact(
             'customerCount', 'adminCount', 'employeeCount',
-            
+            'roomsCount' , 'restaurantCount','foodOrderCount',
+            'menuCount','reservationCount','poolCount'
         ));
     }
     public function approveUsers()
