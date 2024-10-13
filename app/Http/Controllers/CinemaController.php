@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cinema;
 use Illuminate\Http\Request;
 
 class CinemaController extends Controller
@@ -11,7 +12,8 @@ class CinemaController extends Controller
      */
     public function index()
     {
-        //
+        $cinemas = Cinema::all();
+        return view('cinemas.index', compact('cinemas'));
     }
 
     /**
@@ -19,7 +21,7 @@ class CinemaController extends Controller
      */
     public function create()
     {
-        //
+        return view('cinemas.create');
     }
 
     /**
@@ -27,7 +29,9 @@ class CinemaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Cinema::create($request->all());
+        return redirect()->route('cinemas.index')->with('success', 'Cinema created successfully!');
+
     }
 
     /**

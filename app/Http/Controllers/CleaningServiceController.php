@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CleaningService;
 use Illuminate\Http\Request;
 
 class CleaningServiceController extends Controller
@@ -11,7 +12,9 @@ class CleaningServiceController extends Controller
      */
     public function index()
     {
-        //
+        $services = CleaningService::all();
+        return view('cleaning_services.index', compact('services'));
+
     }
 
     /**
@@ -19,7 +22,7 @@ class CleaningServiceController extends Controller
      */
     public function create()
     {
-        //
+        return view('cleaning_services.create');
     }
 
     /**
@@ -27,7 +30,9 @@ class CleaningServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        CleaningService::create($request->all());
+        return redirect()->route('cleaning_services.index')->with('success', 'Cleaning service added successfully!');
+
     }
 
     /**

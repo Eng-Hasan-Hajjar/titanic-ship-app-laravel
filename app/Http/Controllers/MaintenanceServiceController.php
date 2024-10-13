@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MaintenanceService;
 use Illuminate\Http\Request;
 
 class MaintenanceServiceController extends Controller
@@ -11,7 +12,9 @@ class MaintenanceServiceController extends Controller
      */
     public function index()
     {
-        //
+        $services = MaintenanceService::all();
+        return view('maintenance_services.index', compact('services'));
+
     }
 
     /**
@@ -19,7 +22,8 @@ class MaintenanceServiceController extends Controller
      */
     public function create()
     {
-        //
+        return view('maintenance_services.create');
+
     }
 
     /**
@@ -27,7 +31,9 @@ class MaintenanceServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        MaintenanceService::create($request->all());
+        return redirect()->route('maintenance_services.index')->with('success', 'Maintenance service added successfully!');
+
     }
 
     /**
