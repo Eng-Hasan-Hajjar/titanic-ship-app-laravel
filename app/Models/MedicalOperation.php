@@ -8,23 +8,24 @@ use Illuminate\Database\Eloquent\Model;
 class MedicalOperation extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'operation_type', 'location', 'description', 'initiated_by', 'patient_ids', 'medical_staff_ids', 'status', 'operation_time'
-    ];
+    protected $fillable = ['operation_type', 'location', 'description',  'status', 'operation_time'];
 
-    protected $casts = [
-        'patient_ids' => 'array',  // تحويل الحقل إلى مصفوفة
-        'medical_staff_ids' => 'array',  // تحويل الحقل إلى مصفوفة
-        'operation_time' => 'datetime',
-    ];
 
-    public function initiatedBy()
-    {
-        return $this->belongsTo(Passenger::class, 'initiated_by');
-    }
+      // علاقة مع الراكب الذي أبلغ عن الحالة
+      public function initiator()
+      {
+          return $this->belongsTo(Passenger::class, 'initiated_by');
+      }
 
-    public function medicalStaff()
-    {
-        return $this->hasMany(Employee::class, 'medical_staff_ids');
-    }
+      // علاقة many-to-many مع المرضى الذين يتلقون الرعاية
+      public function patients()
+      {
+          return $this->belongsToMany(Passenger::class, 'medical_operation_patient');
+      }
+
+      // علاقة many-to-many مع العاملين الطبيين المسؤولين
+      public function medicalStaff()
+      {
+          return $this->belongsToMany(Employee::class, 'medical_operation_staff');
+      }
 }

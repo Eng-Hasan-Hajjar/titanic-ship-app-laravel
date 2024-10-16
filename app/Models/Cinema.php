@@ -9,10 +9,12 @@ class Cinema extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name', 'seating_capacity', 'screen_size', 'current_movie', 'show_times', 'is_open'
+        'name', 'seating_capacity', 'screen_size', 'current_movie', 'is_open'
     ];
 
-    protected $casts = [
-        'show_times' => 'array',  // تحويل الحقل إلى مصفوفة
-    ];
+    // علاقة one-to-many مع أوقات العروض
+    public function showTimes()
+    {
+        return $this->hasMany(ShowTime::class);
+    }
 }

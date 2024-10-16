@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('cinemas', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('seating_capacity');
-            $table->string('screen_size');
-            $table->string('current_movie')->nullable();
-            $table->json('show_times');  // يمكن تخزين أوقات العروض كـ JSON
-            $table->boolean('is_open')->default(true);
+            $table->string('name');  // اسم السينما
+            $table->integer('seating_capacity');  // سعة المقاعد
+            $table->string('screen_size');  // حجم الشاشة
+            $table->string('current_movie')->nullable();  // الفيلم الحالي
+            $table->boolean('is_open')->default(true);  // حالة السينما (مفتوحة/مغلقة)
+        
             $table->timestamps();
         });
     }

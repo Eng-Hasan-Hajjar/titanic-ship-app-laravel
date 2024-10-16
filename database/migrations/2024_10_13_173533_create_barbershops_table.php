@@ -13,11 +13,10 @@ return new class extends Migration
     {
         Schema::create('barbershops', function (Blueprint $table) {
             $table->id();
-            $table->string('name');  // اسم الصالون
-            $table->integer('capacity');  // سعة الصالون
-            $table->json('services')->nullable();  // الخدمات المقدمة
+            $table->string('name');  // اسم محل الحلاقة
+            $table->integer('capacity');  // سعة المحل
             $table->string('opening_hours');  // ساعات العمل
-            $table->boolean('is_open')->default(true);  // ما إذا كان الصالون مفتوحاً
+            $table->boolean('is_open')->default(true);  // إذا كان المحل مفتوح
             $table->timestamps();
         });
     }

@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('pools', function (Blueprint $table) {
             $table->id();
             $table->string('pool_name');
-        $table->decimal('depth', 5, 2);
-        $table->integer('capacity');
-        $table->enum('water_type', ['freshwater', 'saltwater']);
-        $table->boolean('is_open')->default(true);
+            $table->decimal('depth', 5, 2);
+            $table->integer('capacity');
+            $table->enum('water_type', ['freshwater', 'saltwater']);
+            $table->boolean('is_open')->default(true);
             $table->timestamps();
         });
     }

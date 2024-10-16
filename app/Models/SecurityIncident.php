@@ -8,22 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class SecurityIncident extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'incident_type', 'location', 'description', 'reported_by', 'passenger_ids', 'employee_id', 'status', 'incident_time'
-    ];
 
-    protected $casts = [
-        'passenger_ids' => 'array',  // تحويل الحقل إلى مصفوفة
-        'incident_time' => 'datetime',
-    ];
 
+    protected $fillable = ['incident_type', 'location', 'description',  'employee_id', 'status', 'incident_time'];
+
+
+
+    // علاقة مع الموظف الذي يتعامل مع الحادث
     public function employee()
     {
         return $this->belongsTo(Employee::class);
     }
 
-    public function reportedBy()
+    // علاقة مع الركاب المتورطين في الحادث
+    public function passengers()
     {
-        return $this->belongsTo(Passenger::class, 'reported_by');
+        return $this->belongsToMany(Passenger::class, 'security_incident_passengers');
     }
 }

@@ -16,9 +16,6 @@ return new class extends Migration
             $table->string('operation_type');  // نوع عملية الإنقاذ
             $table->string('location');  // مكان الحادثة أو الإنقاذ
             $table->text('description');  // وصف تفصيلي للحادثة
-            $table->foreignId('initiated_by')->constrained('passengers');  // الشخص الذي أبلغ عن الحادثة
-            $table->json('passenger_ids')->nullable();  // الركاب الذين يتم إنقاذهم
-            $table->json('rescuer_ids')->nullable();  // الموظفون المسؤولون عن الإنقاذ
             $table->enum('status', ['in_progress', 'completed', 'pending'])->default('in_progress');  // حالة الإنقاذ
             $table->timestamp('operation_time');  // وقت بداية الإنقاذ
 

@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('gym_bookings', function (Blueprint $table) {
+        Schema::create('gym_equipment', function (Blueprint $table) {
             $table->id();
             $table->foreignId('gym_id')->constrained('gyms')->onDelete('cascade');  // الربط بالصالة الرياضية
-            $table->foreignId('customer_id')->constrained('customers')->onDelete('cascade');  // الربط بالعميل
-            $table->timestamp('start_time');  // وقت بدء الحجز
-            $table->timestamp('end_time');  // وقت انتهاء الحجز
-            $table->enum('status', ['confirmed', 'cancelled', 'completed'])->default('confirmed');  // حالة الحجز
-      
+            $table->string('equipment_name');  // اسم المعدة
+            $table->string('condition');  // حالة المعدة مثل جيدة أو تحتاج للصيانة
+     
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('gym_bookings');
+        Schema::dropIfExists('gym_equipment');
     }
 };

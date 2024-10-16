@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('barbershop_bookings', function (Blueprint $table) {
+        Schema::create('barbershop_services', function (Blueprint $table) {
             $table->id();
             $table->foreignId('barbershop_id')->constrained('barbershops')->onDelete('cascade');  // الربط بمحلات الحلاقة
-            $table->foreignId('customer_id')->constrained('customers')->onDelete('cascade');  // الربط بالعملاء
-            $table->timestamp('start_time');  // وقت بدء الحجز
-            $table->timestamp('end_time');  // وقت انتهاء الحجز
-            $table->enum('status', ['confirmed', 'cancelled', 'completed'])->default('confirmed');  // حالة الحجز
-      
+            $table->string('service_name');  // اسم الخدمة مثل قص الشعر أو الحلاقة
+            $table->decimal('price', 10, 2);  // سعر الخدمة
+
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('barbershop_bookings');
+        Schema::dropIfExists('barbershop_services');
     }
 };

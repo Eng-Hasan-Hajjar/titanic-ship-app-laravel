@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('gyms', function (Blueprint $table) {
+        Schema::create('show_times', function (Blueprint $table) {
             $table->id();
-            $table->string('name');  // اسم الصالة
-            $table->integer('capacity');  // سعة الصالة
-            $table->string('opening_hours');  // ساعات العمل
-            $table->boolean('is_open')->default(true);  // إذا كانت الصالة مفتوحة
+            $table->foreignId('cinema_id')->constrained('cinemas')->onDelete('cascade');  // علاقة بالسينما
+            $table->timestamp('show_time');  // وقت العرض
+      
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('gyms');
+        Schema::dropIfExists('show_times');
     }
 };

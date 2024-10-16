@@ -8,15 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Barbershop extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'name', 'capacity', 'services', 'opening_hours', 'is_open'
-    ];
+    protected $fillable = ['name', 'capacity', 'opening_hours', 'is_open'];
 
-    protected $casts = [
-        'services' => 'array',  // تحويل الحقل إلى مصفوفة
-    ];
+    // علاقة مع الخدمات
+    public function services()
+    {
+        return $this->hasMany(BarbershopService::class);
+    }
 
-    // علاقة مع الحجوزات (سنقوم بإنشائها لاحقًا)
+    // علاقة مع الحجوزات
     public function bookings()
     {
         return $this->hasMany(BarbershopBooking::class);

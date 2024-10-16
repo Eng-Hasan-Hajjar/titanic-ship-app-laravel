@@ -8,13 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class EventHall extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'hall_name', 'capacity', 'availability', 'features', 'price_per_hour', 'operating_hours', 'is_open'
-    ];
 
-    protected $casts = [
-        'features' => 'array',  // تحويل الحقل إلى مصفوفة
-    ];
+    protected $fillable = ['hall_name', 'capacity', 'availability', 'price_per_hour', 'operating_hours', 'is_open'];
+
+    // علاقة مع ميزات القاعة
+    public function features()
+    {
+        return $this->hasMany(EventHallFeature::class);
+    }
 
     // علاقة مع الحجوزات
     public function bookings()

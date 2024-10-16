@@ -9,17 +9,13 @@ class NavigationOperation extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'route_name', 'start_location', 'end_location', 'current_position', 'crew_in_charge', 'weather_conditions', 'navigation_status', 'start_time', 'estimated_arrival'
+        'route_name', 'start_location', 'end_location', 'current_position',
+        'weather_conditions', 'navigation_status', 'start_time', 'estimated_arrival'
     ];
 
-    protected $casts = [
-        'crew_in_charge' => 'array',  // تحويل الحقل إلى مصفوفة
-        'start_time' => 'datetime',
-        'estimated_arrival' => 'datetime',
-    ];
-
-    public function crewInCharge()
+    // علاقة many-to-many مع الطاقم المسؤول عن الملاحة
+    public function crew()
     {
-        return $this->hasMany(Employee::class, 'crew_in_charge');
+        return $this->belongsToMany(Employee::class, 'navigation_operation_crew');
     }
 }

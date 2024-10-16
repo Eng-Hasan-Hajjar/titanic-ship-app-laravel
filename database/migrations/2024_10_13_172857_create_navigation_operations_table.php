@@ -17,12 +17,11 @@ return new class extends Migration
             $table->string('start_location');  // الموقع الذي تبدأ منه الرحلة
             $table->string('end_location');  // الوجهة النهائية للرحلة
             $table->string('current_position');  // الموقع الحالي للباخرة
-            $table->json('crew_in_charge')->nullable();  // طاقم الملاحة المسؤول
             $table->string('weather_conditions')->nullable();  // الظروف الجوية
             $table->enum('navigation_status', ['in_progress', 'completed', 'delayed'])->default('in_progress');  // حالة الملاحة
             $table->timestamp('start_time');  // وقت بدء الرحلة
             $table->timestamp('estimated_arrival')->nullable();  // وقت الوصول المقدر
-      
+
             $table->timestamps();
         });
     }

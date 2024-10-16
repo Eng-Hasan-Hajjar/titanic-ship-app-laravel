@@ -13,14 +13,12 @@ return new class extends Migration
     {
         Schema::create('security_incidents', function (Blueprint $table) {
             $table->id();
-            $table->string('incident_type');  // نوع الحادثة
-            $table->string('location');  // مكان الحادثة
-            $table->text('description');  // وصف تفصيلي للحادثة
-            $table->foreignId('reported_by')->constrained('passengers');  // علاقة مع الركاب أو الموظفين
-            $table->json('passenger_ids')->nullable();  // الركاب المتورطون كـ JSON
-            $table->foreignId('employee_id')->constrained('employees');  // الموظف المسؤول عن التعامل
-            $table->enum('status', ['under_investigation', 'closed', 'in_progress'])->default('under_investigation');  // حالة الحادثة
-            $table->timestamp('incident_time');  // وقت الحادثة
+            $table->string('incident_type');  // نوع الحادث
+            $table->string('location');  // مكان الحادث
+            $table->text('description');  // وصف الحادث
+            $table->foreignId('employee_id')->constrained('employees')->onDelete('cascade');  // الربط بالموظف الذي يتعامل مع الحادث
+            $table->enum('status', ['under_investigation', 'closed', 'in_progress'])->default('under_investigation');  // حالة الحادث
+            $table->timestamp('incident_time');  // وقت وقوع الحادث
             $table->timestamps();
         });
     }

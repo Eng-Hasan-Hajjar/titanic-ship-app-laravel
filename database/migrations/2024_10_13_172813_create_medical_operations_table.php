@@ -16,12 +16,9 @@ return new class extends Migration
             $table->string('operation_type');  // نوع العملية الطبية
             $table->string('location');  // مكان العملية الطبية
             $table->text('description');  // وصف تفصيلي للحالة الطبية
-            $table->foreignId('initiated_by')->constrained('passengers');  // الشخص الذي أبلغ عن الحالة
-            $table->json('patient_ids')->nullable();  // المرضى الذين يتلقون الرعاية
-            $table->json('medical_staff_ids')->nullable();  // العاملون الطبيون المسؤولون
             $table->enum('status', ['in_progress', 'completed', 'pending'])->default('in_progress');  // حالة العملية الطبية
             $table->timestamp('operation_time');  // وقت بداية العملية الطبية
-      
+
             $table->timestamps();
         });
     }

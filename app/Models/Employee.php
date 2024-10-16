@@ -18,4 +18,22 @@ class Employee extends Model
         'hire_date',
         'salary'
     ];
+
+
+      // علاقة many-to-many مع عمليات الإنقاذ
+      public function rescueOperations()
+      {
+          return $this->belongsToMany(RescueOperation::class, 'rescue_operation_rescuer');
+      }
+        // علاقة many-to-many مع عمليات الملاحة
+    public function navigationOperations()
+    {
+        return $this->belongsToMany(NavigationOperation::class, 'navigation_operation_crew');
+    }
+
+    // علاقة many-to-many مع العمليات الطبية
+    public function medicalOperations()
+    {
+        return $this->belongsToMany(MedicalOperation::class, 'medical_operation_staff');
+    }
 }
