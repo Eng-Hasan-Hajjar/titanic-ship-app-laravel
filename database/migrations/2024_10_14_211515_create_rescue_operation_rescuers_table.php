@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('rescue_operation_id')->constrained('rescue_operations')->onDelete('cascade');
             $table->foreignId('employee_id')->constrained('employees')->onDelete('cascade');
+            $table->boolean('is_rescuer')->default(true);
 
             $table->timestamps();
         });

@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('barbershop_id')->constrained('barbershops')->onDelete('cascade');  // الربط بمحلات الحلاقة
             $table->foreignId('customer_id')->constrained('customers')->onDelete('cascade');  // الربط بالعملاء
-            $table->timestamp('start_time');  // وقت بدء الحجز
-            $table->timestamp('end_time');  // وقت انتهاء الحجز
+            $table->dateTime('start_time');  // وقت بدء الحجز
+            $table->dateTime('end_time');  // وقت انتهاء الحجز
             $table->enum('status', ['confirmed', 'cancelled', 'completed'])->default('confirmed');  // حالة الحجز
-      
+
             $table->timestamps();
         });
     }

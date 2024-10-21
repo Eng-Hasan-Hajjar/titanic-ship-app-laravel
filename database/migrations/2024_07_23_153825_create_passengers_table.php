@@ -21,6 +21,9 @@ return new class extends Migration
             $table->boolean('gender');
             $table->date('birthday');
 
+            $table->timestamp('check_in_time')->nullable();  // وقت تسجيل الدخول
+            $table->timestamp('check_out_time')->nullable();  // وقت تسجيل الخروج
+
 
             $table->timestamps();
             // تعيين ترتيب الحقول

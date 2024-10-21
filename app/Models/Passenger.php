@@ -9,17 +9,12 @@ class Passenger extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'user_id',
-        'phone',
-        'work',
-
-        'nationality',
-        'current_location',
-        'gender',
-        'birthday',
+        'user_id',  'phone', 'work','nationality', 'current_location',  'gender', 'birthday',
+        'check_in_time',  // إضافة حقل وقت تسجيل الدخول
+        'check_out_time'  // إضافة حقل وقت تسجيل الخروج
 
     ];
-    protected $dates = ['birthday'];
+    protected $dates = ['birthday', 'check_in_time', 'check_out_time'];
 
 
        // علاقة many-to-many مع عمليات الإنقاذ

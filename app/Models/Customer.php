@@ -9,26 +9,32 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Customer extends Model
 {
     use HasFactory;
+
+    // الحقول القابلة للتعبئة في النموذج
     protected $fillable = [
-    'user_id',
-    'phone',
-    'work',
+        'user_id',
+        'phone',
+        'work',
+        'nationality',
+        'current_location',
+        'gender',
+        'birthday',
+        'check_in_time',  // إضافة حقل وقت تسجيل الدخول
+        'check_out_time'  // إضافة حقل وقت تسجيل الخروج
+    ];
 
-    'nationality',
-    'current_location',
-    'gender',
-    'birthday',
+    // الحقول التي يتم تحويلها إلى تواريخ
+    protected $dates = ['birthday'];
 
-];
-protected $dates = ['birthday'];
+    // علاقة الزبون بالمستخدم (User)
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 
-public function user(): BelongsTo
-{
-    return $this->belongsTo(User::class);
-}
-public function foodOrders()
-{
-    return $this->hasMany(FoodOrder::class);
-}
-
+    // علاقة الزبون بطلبات الطعام (FoodOrder)
+    public function foodOrders()
+    {
+        return $this->hasMany(FoodOrder::class);
+    }
 }
