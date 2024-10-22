@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barbershop;
 use Illuminate\Http\Request;
 
 class BarbershopController extends Controller

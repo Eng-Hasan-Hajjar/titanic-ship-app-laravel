@@ -123,7 +123,9 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\FoodOrderController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\EmployeeController;
-
+use App\Http\Controllers\MovieController;
+use App\Http\Controllers\MovieReviewController;
+use App\Http\Controllers\SeatReservationController;
 
 Route::get('/users/employees', [EmployeeController::class, 'employees'])->name('users.employees');
 
@@ -146,6 +148,12 @@ Route::resource('food_orders', FoodOrderController::class);
 Route::resource('reservations', ReservationController::class);
 
 
+
+
+////////////////// cinema departement
+Route::resource('movies', MovieController::class);
+Route::resource('seat-reservations', SeatReservationController::class);
+Route::resource('movie-reviews', MovieReviewController::class);
 
 
 

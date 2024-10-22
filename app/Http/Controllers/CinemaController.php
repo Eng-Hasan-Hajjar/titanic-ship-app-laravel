@@ -7,62 +7,57 @@ use Illuminate\Http\Request;
 
 class CinemaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        $cinemas = Cinema::all();
-        return view('cinemas.index', compact('cinemas'));
-    }
+     // عرض جميع السينمات
+     public function index()
+     {
+         $cinemas = Cinema::all();
+         return response()->json($cinemas, 200);
+     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('cinemas.create');
-    }
+     // عرض سينما معينة
+     public function show($id)
+     {
+         $cinema = Cinema::findOrFail($id);
+         return response()->json($cinema, 200);
+     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        Cinema::create($request->all());
-        return redirect()->route('cinemas.index')->with('success', 'Cinema created successfully!');
+     // إنشاء سينما جديدة
+     public function store(Request $request)
+     {
+         $validated = $request->validate([
+             'name' => 'required|string|max:255',
+             'seating_capacity' => 'required|integer',
+             'screen_size' => 'required|string|max:255',
+             'current_movie' => 'nullable|string|max:255',
+             'is_open' => 'boolean',
+         ]);
 
-    }
+         $cinema = Cinema::create($validated);
+         return response()->json($cinema, 201);
+     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+     // تعديل سينما موجودة
+     public function update(Request $request, $id)
+     {
+         $cinema = Cinema::findOrFail($id);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+         $validated = $request->validate([
+             'name' => 'sometimes|required|string|max:255',
+             'seating_capacity' => 'sometimes|required|integer',
+             'screen_size' => 'sometimes|required|string|max:255',
+             'current_movie' => 'nullable|string|max:255',
+             'is_open' => 'boolean',
+         ]);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+         $cinema->update($validated);
+         return response()->json($cinema, 200);
+     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+     // حذف سينما
+     public function destroy($id)
+     {
+         $cinema = Cinema::findOrFail($id);
+         $cinema->delete();
+         return response()->json(['message' => 'Cinema deleted successfully'], 200);
+     }
 }

@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('name');  // اسم السينما
             $table->integer('seating_capacity');  // سعة المقاعد
             $table->string('screen_size');  // حجم الشاشة
-            $table->string('current_movie')->nullable();  // الفيلم الحالي
+            $table->foreignId('current_movie_id')->nullable()->constrained('movies')->onDelete('set null');  // علاقة بالفيلم الحالي
             $table->boolean('is_open')->default(true);  // حالة السينما (مفتوحة/مغلقة)
-        
+            
             $table->timestamps();
         });
     }

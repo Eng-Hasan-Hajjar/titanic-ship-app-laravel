@@ -21,6 +21,11 @@ return new class extends Migration
             $table->date('hire_date');
             $table->decimal('salary', 10, 2);
             $table->timestamps();
+
+            $table->unsignedBigInteger('user_id');
+
+            $table->index('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

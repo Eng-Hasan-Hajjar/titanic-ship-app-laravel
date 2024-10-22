@@ -5,21 +5,26 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cinema extends Model
+class Movie extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name', 'seating_capacity', 'screen_size', 'current_movie_id', 'is_open',
+        'title', 'genre', 'duration', 'director', 'description',
     ];
 
-    public function currentMovie()
+    public function cinemas()
     {
-        return $this->belongsTo(Movie::class, 'current_movie_id');
+        return $this->hasMany(Cinema::class, 'current_movie_id');
     }
 
     public function showTimes()
     {
         return $this->hasMany(ShowTime::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(MovieReview::class);
     }
 }

@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('show_times', function (Blueprint $table) {
+        Schema::create('movie_reviews', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('cinema_id')->constrained('cinemas')->onDelete('cascade');  // علاقة بالسينما
             $table->foreignId('movie_id')->constrained('movies')->onDelete('cascade');  // علاقة بالفيلم
-            $table->dateTime('show_time');  // وقت العرض
-
+            $table->foreignId('passenger_id')->constrained('passengers')->onDelete('cascade');  // علاقة بالراكب
+            $table->integer('rating');  // التقييم من 1 إلى 5
+            $table->text('review')->nullable();  // مراجعة نصية
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('show_times');
+        Schema::dropIfExists('movie_reviews');
     }
 };
