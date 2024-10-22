@@ -26,18 +26,17 @@ class ProfileController extends Controller
         $adminCount = User::where('role', 'admin')->count();
         $employeeCount = User::where('role', 'employee')->count();
 
-
+/*
         // Fetching counts for social media accounts
         $facebookPageCount = FacebookPage::count();
         $instagramAccountCount = InstagramAccount::count();
         $youtubeChannelCount = YouTubeChannel::count();
-
+*/
         return view('profile.edit', [
             'user' => $request->user(),
         ], compact(
             'customerCount', 'adminCount', 'employeeCount',
-             'facebookPageCount',
-            'instagramAccountCount', 'youtubeChannelCount',
+
         ));
     }
 

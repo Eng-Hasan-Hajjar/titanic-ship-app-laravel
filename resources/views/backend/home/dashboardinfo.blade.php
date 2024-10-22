@@ -322,14 +322,14 @@
 
                 <!-- زر معلوماتي -->
                 <div class="col-md-2 mb-4">
-                    <a href="{{ route('customers.showByUserId', ['userId' => Auth::user()->id]) }}" class="btn btn-info action-button">
+                    <a href="{{ route('passengers.showByUserId', ['userId' => Auth::user()->id]) }}" class="btn btn-info action-button">
                         <i class="fas fa-info-circle"></i> My Info
                     </a>
                 </div>
 
                 <!-- زر إنشاء الحجز -->
                 <div class="col-md-4 mb-12">
-                    <a href="{{ route('bookings.create') }}" class="btn btn-create-booking action-button">
+                    <a href="{{ route('passengers.create') }}" class="btn btn-create-booking action-button">
                         <i class="fas fa-calendar-plus"></i> Create Booking
                     </a>
                 </div>

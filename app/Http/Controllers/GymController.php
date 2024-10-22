@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Gym;
 use Illuminate\Http\Request;
 
 class GymController extends Controller

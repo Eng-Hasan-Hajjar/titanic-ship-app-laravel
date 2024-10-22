@@ -3,12 +3,9 @@
 namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
-
-use App\Models\CarReservation;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use App\Models\User;
-use App\Policies\CarReservationPolicy;
 use App\Policies\UserPolicy;
 
 class AuthServiceProvider extends ServiceProvider
@@ -20,7 +17,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         User::class => UserPolicy::class,
-      //  CarReservation::class => CarReservationPolicy::class,
+
     ];
 
     /**
@@ -33,6 +30,7 @@ class AuthServiceProvider extends ServiceProvider
         // تعريف الصلاحيات باستخدام Gate
         Gate::define('isVisitor', [UserPolicy::class, 'isVisitor']);
         Gate::define('isCustomer', [UserPolicy::class, 'isCustomer']);
+        Gate::define('isPassenger', [UserPolicy::class, 'isPassenger']);
         Gate::define('isEmployee', [UserPolicy::class, 'isEmployee']);
         Gate::define('isAdmin', [UserPolicy::class, 'isAdmin']);
     }

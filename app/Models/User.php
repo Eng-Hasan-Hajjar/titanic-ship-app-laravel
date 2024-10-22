@@ -48,7 +48,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(Customer::class);
     }
-
+    public function passenger(): HasOne
+    {
+        return $this->hasOne(Passenger::class);
+    }
 
 
 }

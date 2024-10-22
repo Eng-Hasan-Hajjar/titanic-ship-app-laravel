@@ -27,14 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 });
 
-Route::middleware('auth')->group(function () {
-    Route::resource('/adminpanel/customers', CustomerController::class);
-    Route::post('/adminpanel/customers2', [CustomerController::class, 'input'])->name('customers2.input');
-    Route::get('/adminpanel/customers2', [CustomerController::class, 'input'])->name('customers2.input');
-    Route::post('/adminpanel/customers2', [CustomerController::class, 'input2'])->name('customers2.input2');
-    Route::get('/customers/user/{userId}', [CustomerController::class, 'showCustomerByUserId'])->name('customers.showByUserId');
 
-});
 Route::get('/n', function () {
     return view('welcome');
 });
@@ -125,6 +118,7 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\MovieReviewController;
+use App\Http\Controllers\PassengerController;
 use App\Http\Controllers\SeatReservationController;
 
 Route::get('/users/employees', [EmployeeController::class, 'employees'])->name('users.employees');
@@ -148,6 +142,16 @@ Route::resource('food_orders', FoodOrderController::class);
 Route::resource('reservations', ReservationController::class);
 
 
+//////////////////  passenger
+
+Route::middleware('auth')->group(function () {
+    Route::resource('/adminpanel/passengers', PassengerController::class);
+    Route::post('/adminpanel/passengers2', [PassengerController::class, 'input'])->name('passengers2.input');
+    Route::get('/adminpanel/passengers2', [PassengerController::class, 'input'])->name('passengers2.input');
+    Route::post('/adminpanel/passengers2', [PassengerController::class, 'input2'])->name('passengers2.input2');
+    Route::get('/passengers/user/{userId}', [PassengerController::class, 'showPassengerByUserId'])->name('passengers.showByUserId');
+
+});
 
 
 ////////////////// cinema departement
